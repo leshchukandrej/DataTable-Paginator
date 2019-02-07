@@ -1,0 +1,8 @@
+<!--
+ - Created by ctuser on 06.02.2019.
+ -->
+
+<aura:event type="APPLICATION" description="DataTablePaginatorEvent">
+    <aura:attribute name="offset" type="Integer"/>
+    <aura:attribute name="itemsPerPage" type="Integer"/>
+</aura:event>
