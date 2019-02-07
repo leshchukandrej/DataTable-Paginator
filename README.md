@@ -14,7 +14,7 @@
 ```    
   As you can see in example, you don't need to put value into data attribute in lightning:dataTable. It's automatically splits records to pages and fills in by DataTablePaginator, where you need to put your records into "items" attribute.
 
-[![DataTablePaginator](https://github.com/leshchukandrej/DataTable-Paginator/blob/master/DatraTablePaginator.png)](https://github.com/leshchukandrej/DataTable-Paginator/blob/master/DatraTablePaginator.png)
+[![DataTablePaginator](https://github.com/leshchukandrej/DataTable-Paginator/blob/master/DataTablePaginator.png)](https://github.com/leshchukandrej/DataTable-Paginator/blob/master/DataTablePaginator.png)
 
   You can use Paginator with dynamically loaded elements. For using DataTablePaginator in this case, you should put in attribute isRecordsLoadsDynamically value "true" and handle onChangePage event. In this event, you will receive "offset" and "itemsPerPage" attributes by wich you should query records with OFFSET and LIMIT values in SOQL. 
   Example of using:
