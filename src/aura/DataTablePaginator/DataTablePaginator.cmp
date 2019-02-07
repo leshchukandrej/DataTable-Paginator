@@ -1,0 +1,74 @@
+<!--
+ - Created by ctuser on 05.02.2019.
+ -->
+
+<aura:component description="DataTablePaginator">
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.items}" action="{!c.onItemsChange}"/>
+    <aura:handler name="change" value="{!v.elementsPerPage}" action="{!c.validateElementsPerPage}"/>
+
+    <aura:registerEvent name="onChangePage" type="c:DataTablePaginatorEvent"/>
+
+    <aura:attribute name="items" type="Object[]"/>
+    <aura:attribute name="shownItems" type="Object[]"/>
+    <aura:attribute name="elementsPerPage" type="Integer" access="public"/>
+
+    <aura:attribute name="isRecordsLoadsDynamically" type="Boolean"/>
+    <aura:attribute name="pages" type="Integer" default="1"/>
+
+    <aura:attribute name="dataTable" type="Aura.Component" access="private"/>
+    <aura:attribute name="currentPage" access="private" type="Integer" default="1"/>
+
+        {!v.body}
+
+    <div class="{!v.dataTable ? '' : 'slds-hide'}">
+
+        <lightning:slider variant="label-hidden" label="Pages" class="" value="{!v.currentPage}" min="1"
+                          max="{!v.pages}" onchange="{!c.goToSpecificPage}" step="1"/>
+
+        <lightning:layout horizontalAlign="center" multipleRows="true">
+
+            <lightning:layoutItem>
+
+                <lightning:buttonGroup>
+
+                    <lightning:button label="First" onclick="{!c.goToFirstPage}"/>
+
+                </lightning:buttonGroup>
+
+                <lightning:buttonGroup>
+
+                    <lightning:button onclick="{!c.goToPreviousPage}">
+
+                        <div class="slds-flip--horizontal">
+                            &#10148;
+                        </div>
+
+                    </lightning:button>
+
+                    <div class="slds-button slds-button--neutral">
+
+                    {!v.currentPage} of {!v.pages}
+
+                    </div>
+
+                    <lightning:button onclick="{!c.goToNextPage}">
+                        &#10148;
+                    </lightning:button>
+
+                </lightning:buttonGroup>
+
+                <lightning:buttonGroup>
+
+                    <lightning:button label="Last" onclick="{!c.goToLastPage}"/>
+
+                </lightning:buttonGroup>
+
+            </lightning:layoutItem>
+
+        </lightning:layout>
+
+    </div>
+
+</aura:component>
