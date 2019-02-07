@@ -6,13 +6,13 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
     <aura:handler name="change" value="{!v.items}" action="{!c.onItemsChange}"/>
-    <aura:handler name="change" value="{!v.elementsPerPage}" action="{!c.validateElementsPerPage}"/>
+    <aura:handler name="change" value="{!v.itemsPerPage}" action="{!c.validateElementsPerPage}"/>
 
     <aura:registerEvent name="onChangePage" type="c:DataTablePaginatorEvent"/>
 
     <aura:attribute name="items" type="Object[]"/>
     <aura:attribute name="shownItems" type="Object[]"/>
-    <aura:attribute name="elementsPerPage" type="Integer" access="public"/>
+    <aura:attribute name="itemsPerPage" type="Integer" access="public"/>
 
     <aura:attribute name="isRecordsLoadsDynamically" type="Boolean"/>
     <aura:attribute name="pages" type="Integer" default="1"/>

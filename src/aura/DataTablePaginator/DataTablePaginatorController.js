@@ -65,14 +65,8 @@
         helper.shiftPage(component, 1);
     },
 
-    validateElementsPerPage: function (component, event, helper) {
-        if (!component.get('v.isRecordsLoadsDynamically')) {
-            let elementsPerPage = event.getParam('value')
-            if (!elementsPerPage) {
-                return
-            }
+    validateItemsPerPage: function (component, event, helper) {
             helper.recalculatePages(component)
-        }
     },
 
     goToSpecificPage: function (component, event, helper) {

@@ -42,16 +42,16 @@
     recalculatePages: function (component) {
 
         let dataTable = component.get('v.dataTable')
+        let itemsPerPage = component.get('v.itemsPerPage')
 
-        if (!dataTable) {
+        if (!dataTable || !itemsPerPage) {
             return
         }
 
         var items = component.get('v.items');
-        var elementsPerPage = component.get('v.elementsPerPage');
         var currentPage = component.get('v.currentPage');
 
-        if (!items || items.length <= elementsPerPage) {
+        if (!items || items.length <= itemsPerPage) {
             dataTable.set('v.data', items);
             dataTable.set('v.rowNumberOffset', 0);
             component.set('v.currentPage', 1);
@@ -59,16 +59,16 @@
             return
         }
 
-        let pages = this.calculatePages(items, elementsPerPage)
-        let offset = this.calculateOffset(currentPage, elementsPerPage);
+        let pages = this.calculatePages(items, itemsPerPage)
+        let offset = this.calculateOffset(currentPage, itemsPerPage);
 
         if (offset + 1 > items.length) {
             if (currentPage != pages) {
-                this.changeOffsetData(dataTable, items, this.calculateOffset(pages, elementsPerPage), elementsPerPage);
+                this.changeOffsetData(dataTable, items, this.calculateOffset(pages, itemsPerPage), itemsPerPage);
                 component.set('v.currentPage', pages);
             }
         } else {
-            this.changeOffsetData(dataTable, items, offset, elementsPerPage);
+            this.changeOffsetData(dataTable, items, offset, itemsPerPage);
         }
 
         component.set('v.pages', pages);
@@ -90,7 +90,7 @@
             return
         }
 
-        let itemsPerPage = component.get('v.elementsPerPage');
+        let itemsPerPage = component.get('v.itemsPerPage');
         let offset = this.calculateOffset(nextPage, itemsPerPage);
         let items;
 
@@ -125,9 +125,9 @@
         return items.slice(offset, offset + itemsPerPage)
     },
 
-    changeOffsetData: function (dataTable, items, offset, elementsPerPage) {
+    changeOffsetData: function (dataTable, items, offset, itemsPerPage) {
         if (items) {
-            dataTable.set('v.data', this.getElementsRange(items, offset, elementsPerPage));
+            dataTable.set('v.data', this.getElementsRange(items, offset, itemsPerPage));
         }
         dataTable.set('v.rowNumberOffset', offset);
     }
