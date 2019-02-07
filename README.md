@@ -32,5 +32,7 @@
 ###  Attention!!! When you receive this values from Lightning Components in Apex methods, you should always transform received values into Integer even you received an integer values. 
   Like this: 
   
-Integer limitValue = Integer.valueOf(variable1)
-Integer offsetValue = Integer.valueOf(variable2)
+  ```
+  Integer limitValue = Integer.valueOf(variable1);
+  Integer offsetValue = Integer.valueOf(variable2);
+  ```
