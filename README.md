@@ -6,7 +6,7 @@
   Example of using this component:
 
 ```
-    <c:DataTablePaginator elementsPerPage="{!v.recordsPerPage}" items="{!v.data}">
+    <c:DataTablePaginator itemsPerPage="{!v.itemsPerPage}" items="{!v.data}">
 
         <lightning:datatable keyField="Id" columns="{!v.columns}"/>
                                      
@@ -21,7 +21,7 @@
 
 ```
     <c:DataTablePaginator isRecordsLoadsDynamically="true" 
-                                      elementsPerPage="{!v.itemsPerPage}" shownItems="{!v.records}" 
+                                      itemsPerPage="{!v.itemsPerPage}" shownItems="{!v.records}" 
                                       onChangePage="{!c.loadSpecificRecords}" pages="{!v.pages}">
 
           <lightning:datatable keyField="Id" data="{!v.records}" columns="{!v.columns}"/>
